@@ -85,12 +85,12 @@ window.onload = () => {
   });
 };
 
-function addMoreLeft(sectionWrapper) {
+function addMoreLeft(sectionWrapper, element) {
   let swiperContainer = sectionWrapper.style.left;
   let absoluteValue = Math.abs(parseInt(swiperContainer)); // Convert to integer and make it positive
   sectionWrapper.style.left = "0px";
-  let swiper = document.getElementById("section-container");
-  swiper.style.left = `${absoluteValue - 50}px`;
+ 
+  element.style.left = `${absoluteValue - 50}px`;
 }
 
 
@@ -144,11 +144,6 @@ function sliders(sectionwrapper, sectionnavigation) {
 }
 
 
-function addMoreLeft(sectionWrapper) {
-  let swiperContainer = sectionWrapper.children[0];
-  let swiper = document.getElementById("section-container");
-  swiper.style.left = `${swiperContainer.clientWidth * 2}px`;
-}
 
 
 try {
@@ -183,7 +178,11 @@ try {
 
 try {
   let sectionWrapper = document.getElementById("section-wrapper");
-  addMoreLeft(sectionWrapper);
+  let sectionWrappertwo = document.getElementById("section-wrapper-two");
+  let sectionElementtwo = document.getElementById("section-container-two");
+  let sectionElement = document.getElementById("section-container");
+  addMoreLeft(sectionWrapper,sectionElement);
+  addMoreLeft(sectionWrappertwo,sectionElementtwo);
 } catch (error) {
   console.error('Error in addMoreLeft:', error);
 }

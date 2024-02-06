@@ -673,5 +673,21 @@ header {
         place-self: center;
     }
 
+    .section_five .trek-container {
+        display: flex;
+        grid-template-columns:100%;
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .section_four .trek-container {        
+        display: flex;
+        grid-template-columns:100%;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 
+    .trek-content{
+        padding: 15px;
+    }
 }
