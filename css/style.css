@@ -87,8 +87,8 @@ nav .logo img {
     margin-left: var(--gap);
 }
 
-.swiper-wrapper,
-.swiper {
+.mySwiper .swiper-wrapper,
+.mySwiper.swiper  {
     left: 0;
     width: 100%;
     position: absolute;
@@ -102,7 +102,48 @@ header {
     ;
 }
 
-.swiper-slide {
+.newSlider .swiper-slide{
+    aspect-ratio: 9/14;
+    width: 400px !important;           
+    position: relative;
+}
+
+.newSlider{
+    max-height: 900px;
+    align-self: center;
+}
+
+.newSlider .swiper-slide:hover .slide-content{
+    bottom: 13px;
+    transition: 0.2s ease-in-out all; 
+}
+
+.newSlider .overlay{    
+    padding: 100px 25px 25px 25px;
+    background: linear-gradient(to top, #000 0, #000000ed calc(100% - 150px), #00000000 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.newSlider .swiper-slide .slide-content{        
+    position: absolute;
+    transition: 0.4s ease-in-out bottom padding; 
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    font-family: var(--font-secondary);
+}
+
+.newSlider .slide-content > *{
+    transition: 0.4s ease-in-out bottom padding; 
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing);
+}
+
+.mySwiper .swiper-slide {
     background: #fff;
     color: #000;
     z-index: -1;
@@ -116,7 +157,7 @@ header {
     text-align: center;
 }
 
-.swiper-slide h1 {
+.mySwiper .swiper-slide h1 {
     font-size: var(--text-primary-size);
     text-align: center;
     position: relative;
@@ -124,7 +165,7 @@ header {
     z-index: 11;
 }
 
-.swiper-slide button a {
+.mySwiper .swiper-slide button a {
     font-size: var(--text-contingent-size);
     color: var(--text-primary-color);
     border: 1px solid white;
@@ -377,11 +418,10 @@ header {
     gap: 10px;
 }
 
-.section_slider .section-wrapper div img {
+.newSlider .swiper-slide img {
     object-fit: cover;
     width: 100%;
-    height: 100%;
-    object-position: center bottom;
+    height: 100%;    
 }
 
 .section_three {
