@@ -145,13 +145,6 @@ function sliders(sectionwrapper, sectionnavigation) {
 
 
 
-
-try {
-  locoMotive();
-} catch (error) {
-  console.error('Error in locoMotive:', error);
-}
-
 try {
   swiperInit();
 } catch (error) {
