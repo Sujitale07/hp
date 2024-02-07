@@ -27,8 +27,7 @@ function swiperInit() {
   const progressCircle = document.querySelector(".autoplay-progress svg");
   const progressContent = document.querySelector(".autoplay-progress span");
   var swiper = new Swiper(".newSlider", {
-    slidesPerView: "auto",
-    spaceBetween: 10,
+    slidesPerView: "auto",    
     centeredSlides: true,
     breakpoints: {
         // when window width is <= 480px
@@ -36,8 +35,7 @@ function swiperInit() {
             spaceBetween: 70,
           }, 
         1024:{          
-            spaceBetween: 10,
-          
+            spaceBetween: 10,          
         }         
     }
 });
