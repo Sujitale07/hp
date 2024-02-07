@@ -745,7 +745,7 @@ header {
 
     .newSlider .swiper-slide{
         aspect-ratio: 9/14;
-        width: 450px !important;           
+        width: 400px !important;           
         position: relative;
         background: white;
     }
