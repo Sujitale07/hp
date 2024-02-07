@@ -745,10 +745,12 @@ header {
 
     .newSlider .swiper-slide{
         aspect-ratio: 9/14;
-        width: 500px !important;           
+        width: 450px !important;           
         position: relative;
         background: white;
     }
     
-    
+    .newSlider .swiper-wrapper{
+        padding: 0 45px 0px 0px;
+    }
 }
