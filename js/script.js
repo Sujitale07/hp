@@ -41,6 +41,7 @@ function swiperInit() {
       // when window width is <= 480px
       480: {
         spaceBetween: 70,
+        centeredSlides: true
       },
       1024: {
         spaceBetween: 10,
