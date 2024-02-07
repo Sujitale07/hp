@@ -27,14 +27,51 @@ function swiperInit() {
   const progressCircle = document.querySelector(".autoplay-progress svg");
   const progressContent = document.querySelector(".autoplay-progress span");
   var swiper = new Swiper(".newSlider", {
-    slidesPerView: 3,
+    slidesPerView: "auto",
     spaceBetween: 10,
-    freeMode: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
+    centeredSlides: true,
+    breakpoints: {
+        // when window width is <= 480px
+        480: {          
+            spaceBetween: 70,
+          }, 
+        1024:{          
+            spaceBetween: 10,
+          
+        }         
+    }
+});
+
+// Initialize Swiper
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+
+// Intersection Observer options
+var options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.5 // Adjust the threshold as needed
+};
+
+// Callback function for intersection observer
+var callback = function(entries, observer) {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          swiper.slideNext(); // Move one slide forward
+      }
   });
+};
+
+// Create a new Intersection Observer
+var observer = new IntersectionObserver(callback, options);
+
+// Observe the Swiper container
+var swiperContainer = document.querySelector('.newSlider');
+observer.observe(swiperContainer);
+
+
   var swiper = new Swiper(".mySwiper", {
     centeredSlides: true,
     //   autoplay: {
