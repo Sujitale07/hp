@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500&family=Poppins:wght@200;300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;800;900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +13,7 @@
     --text-seondary-size: 40px;
     --text-contingent-size: 24px;
     --text-paragraph-size: 16px;
+    --text-list-size: 20px;
     --grid-gap: 10px;
     --section-gap: 100px;
     --relation-gap: 40px;
@@ -77,6 +78,28 @@ nav .logo img {
     width: 100%;
 }
 
+.itinerary_item{
+    aspect-ratio: 9/9 !important;;
+    width: 600px !important;
+    position: relative;
+    background: white;
+}
+
+.swiper-backface-hidden .itinerary_item {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.itinerary_item {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    display: block;
+}
+
 .hamburger {
     font-size: var(--text-seondary-size);
 }
@@ -104,7 +127,14 @@ header {
 
 .newSlider .swiper-slide{
     aspect-ratio: 9/14;
-    width: 400px !important;           
+    width: 400px ;           
+    position: relative;
+    background: white;
+}
+
+.itinerary_ok .swiper-slide{
+    aspect-ratio: 9/14;
+    width: 400px ;           
     position: relative;
     background: white;
 }
@@ -113,11 +143,21 @@ header {
     max-height: 900px;
     align-self: center;
 }
+.itinerary_ok{
+    max-height: 900px;
+    align-self: center;
+}
 
 .newSlider .swiper-slide:hover .slide-content{
     bottom: 13px;
     transition: 0.2s ease-in-out all; 
 }
+.itinerary_ok .swiper-slide:hover .slide-content{
+    bottom: 13px;
+    transition: 0.2s ease-in-out all; 
+}
+
+
 
 .newSlider .overlay{    
     padding: 200px 25px 25px 25px;
@@ -126,6 +166,23 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
+}
+.itinerary_ok .overlay{    
+    padding: 200px 25px 25px 25px;
+    background: linear-gradient(to top, #000 0, #000000d1 calc(100% - 150px), #00000000 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.itinerary_ok .itinerary_item .overlay{      
+    background: #ffffffee;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .newSlider .swiper-slide .slide-content{        
@@ -137,7 +194,22 @@ header {
     font-family: var(--font-secondary);
 }
 
+.itinerary_ok .swiper-slide .slide-content{        
+    position: absolute;
+    transition: 0.4s ease-in-out bottom padding; 
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    font-family: var(--font-secondary);
+}
+
 .newSlider .slide-content > *{
+    transition: 0.4s ease-in-out bottom padding; 
+    font-family: var(--font-secondary);    
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing);
+}
+.itinerary_ok .slide-content > *{
     transition: 0.4s ease-in-out bottom padding; 
     font-family: var(--font-secondary);    
     font-weight: 500;
@@ -396,13 +468,48 @@ header {
     margin-top: var(--relation-gap);
 }
 
+.itinerary_item .slider-content p{
+    font-family: var(--font-secondary);
+    margin-top: var(--grid-gap);    
+}
+
+.itinerary_item .slider-content {
+    color: black;
+    position: absolute;
+    padding: 0 var(--relation-gap) var(--relation-gap) var(--relation-gap) ;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.itinerary_item .day{
+    display: flex;
+    align-items: baseline;
+    gap: var(--grid-gap);
+}
+
+.itinerary_item h2{
+    font-size: var(--text-primary-size);
+}
+
+.itinerary_item .slider-content h4 {
+    position: static;
+    font-size: var(--text-contingent-size);
+    font-family: var(--font-secondary);    
+    font-weight: bold;
+    left: 0;
+    top: 0;
+    letter-spacing: none;
+    width: 100%;
+    padding: 0;
+}
 
 .slider-content h4 {
     position: absolute;
     left: 0;
     bottom: 0;
     font-size: var(--text-paragraph-size);
-    padding: 20px;
+    padding: var(--relation-gap);
     z-index: 9;
     font-family: var(--font-secondary);
     font-weight: 500;
@@ -608,7 +715,136 @@ header {
     font-family: var(--font-secondary);
 }
 
-@media screen and (max-width: 768px) {
+.hero-itinerary{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+    place-items: center;
+}
+
+.itinerary_hero_section{
+    padding: var(--section-gap);
+}
+
+.itinerary_banner_section img{
+    width: 100%;
+    aspect-ratio: 9/9;
+    object-fit: cover;
+}
+
+.itinerary_hero_section .title{
+    font-size: var(--text-seondary-size);
+    font-weight: 300;
+    margin-bottom: var(--relation-gap);
+}
+
+.itinerary_hero_section .description{
+    font-size: var(--text-paragraph-size);
+    margin-bottom: var(--relation-gap);
+}
+
+.itinerary-section{
+    margin: var(--relation-gap) 0;
+}
+
+.section_data{
+    padding: var(--section-gap) 0;
+}
+
+.section_data .all_data{
+    background: white;
+    padding: var(--section-gap);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: var(--relation-gap);        
+    height: 100%;
+}
+
+.section_data .all_data > * > .title_value{
+    margin: var(--grid-gap) 0;    
+}
+
+.section_data .all_data  .title{
+    font-size: var(--text-contingent-size);
+    font-weight: 400;
+    margin-top: var(--relation-gap);
+}
+
+.section_data .all_data  .title_value{
+    font-size: var(--text-paragraph-size);
+    font-family: var(--font-secondary);
+}
+
+.section_data .all_data > * > *{
+    color: #000;
+}
+
+.included_excluded_section{
+    padding: var(--section-gap) 0;
+}
+
+.includedpexcluded_data{    
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 40%;    
+    gap: var(--section-gap);        
+    height: 100%;
+    place-items: center;
+}
+
+.includedpexcluded_data_container{
+    width: 100%;
+    background: #FFF;
+    padding: var(--relation-gap);
+}
+
+.includedpexcluded_data .title{
+    font-family: var(--font-primary);
+    font-size: var(--text-seondary-size);
+}
+
+ul.included li{
+    color:#000;
+    font-family: var(--font-secondary);
+    font-size: var(--text-list-size);
+    margin-top: var(--grid-gap);
+}
+
+.includedExcludedSwiper .swiper-button-next{
+    color: var(--text-contingent-bg) !important;
+}
+
+.itinerary_slider{
+    padding: var(--section-gap) 0;
+    display: grid;
+    grid-template-columns: 44% 56%;
+}
+
+.slider_content_itinerary{
+    padding: var(--section-gap);    
+}
+
+.slider_content_itinerary .title{
+    font-size: var(--text-seondary-size);   
+    margin-bottom: var(--relation-gap); 
+}
+
+.slider_content_itinerary .description{
+    font-family: var(--font-secondary);
+}
+
+.slider_itinerary_section .swiper-slide{    
+    width: 400px !important;    
+    height: 400px;    
+    background: #fff;    
+}
+
+.itinerary_ok .swiper-slide{
+    width: 100%;
+}
+
+@media screen and (max-width: 940px) {
     :root {
         --text-primary-size: 32px;
         --text-seondary-size: 30px;
@@ -750,7 +986,53 @@ header {
         background: white;
     }
     
+    .itinerary_ok .swiper-wrapper{
+        padding: 0 45px 0px 0px;
+    }
+    .itinerary_ok .swiper-slide{
+        aspect-ratio: 9/14;
+        width: 400px !important;           
+        position: relative;
+        background: white;
+    }
+    
     .newSlider .swiper-wrapper{
         padding: 0 45px 0px 0px;
     }
+
+    .hero-itinerary{
+        display: grid;
+        grid-template-columns: 100%;
+        width: 100%;
+        place-items: center;
+    }
+    
+    .itinerary_hero_section{
+        padding: 20px 15px;
+    }
+
+    .section_data .all_data{        
+        grid-template-columns: 100%;
+        padding: 15px;
+    }
+
+        
+    .includedpexcluded_data{    
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;   
+        gap: 15px;        
+        height: 100%;        
+    }
+
+    .included_div{
+        margin-bottom: var(--relation-gap);
+    }
+   
+    .itinerary_ok .swiper-slide.itinerary_item{
+        aspect-ratio: 16/9 !important;;
+        min-height: 700px !important;
+    }
+
+    
 }

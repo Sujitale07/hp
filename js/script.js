@@ -1,12 +1,21 @@
 
 
+
 function locoMotive() {
   const scroll = new LocomotiveScroll({
     el: document.getElementById("main"),
     smooth: true,
     getDirection: true,
 
+  });
+
+
+  const scrollItinerary = new LocomotiveScroll({
+    el: document.getElementById('itinerary'), // This specifies the element to which the smooth scrolling will be applied.
+    smooth: true, // This option enables smooth scrolling behavior.
+    getDirection: true, // This option enables the ability to determine the scroll direction (up or down).
   })
+
 
   scroll.on("scroll", (instance) => {
     if (instance.direction == "down") {
@@ -21,53 +30,84 @@ function locoMotive() {
   })
 }
 
-locoMotive();
 
 function swiperInit() {
   const progressCircle = document.querySelector(".autoplay-progress svg");
   const progressContent = document.querySelector(".autoplay-progress span");
   var swiper = new Swiper(".newSlider", {
-    slidesPerView: "auto",    
-    centeredSlides: true,
+    slidesPerView: "auto",
+
     breakpoints: {
-        // when window width is <= 480px
-        480: {          
-            spaceBetween: 70,
-          }, 
-        1024:{          
-            spaceBetween: 10,          
-        }         
-    }
-});
-
-// Initialize Swiper
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("#main"),
-  smooth: true
-});
-
-// Intersection Observer options
-var options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.5 // Adjust the threshold as needed
-};
-
-// Callback function for intersection observer
-var callback = function(entries, observer) {
-  entries.forEach(entry => {
-      if (entry.isIntersecting) {
-          swiper.slideNext(); // Move one slide forward
+      // when window width is <= 480px
+      480: {
+        spaceBetween: 70,
+      },
+      1024: {
+        spaceBetween: 10,
       }
+    }
   });
-};
 
-// Create a new Intersection Observer
-var observer = new IntersectionObserver(callback, options);
+  var swiper = new Swiper(".itinerary_ok", {
+    slidesPerView: "auto",
 
-// Observe the Swiper container
-var swiperContainer = document.querySelector('.newSlider');
-observer.observe(swiperContainer);
+    breakpoints: {
+      // when window width is <= 480px
+      480: {
+        spaceBetween: 10,
+      },
+      1024: {
+        spaceBetween: 10,
+      }
+    }
+  });
+
+  var includedSlider = new Swiper(".includedExcludedSwiper", {
+    centeredSlides: true,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+  var itinerarySlide = new Swiper(".itinerary_slide", {
+    centeredSlides: true,
+    loop: true,
+   
+  });
+
+  // Initialize Swiper
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("#main"),
+    smooth: true
+  });
+
+  // Intersection Observer options
+  var options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Adjust the threshold as needed
+  };
+
+  // Callback function for intersection observer
+  var callback = function (entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        swiper.slideNext(); // Move one slide forward
+      }
+    });
+  };
+
+  // Create a new Intersection Observer
+  var observer = new IntersectionObserver(callback, options);
+
+  // Observe the Swiper container
+  var swiperContainer = document.querySelector('.newSlider');
+  observer.observe(swiperContainer);
 
 
   var swiper = new Swiper(".mySwiper", {
@@ -117,7 +157,7 @@ observer.observe(swiperContainer);
 
 //     window.onload = () => {
 //       let array = Array.from(document.querySelectorAll(".containerspan span"));
-    
+
 //       array.forEach((e, index) => {
 //         setTimeout(() => {
 //           e.style.top = "0"
@@ -135,7 +175,7 @@ observer.observe(swiperContainer);
 //   let swiperContainer = sectionWrapper.style.left;
 //   let absoluteValue = Math.abs(parseInt(swiperContainer)); // Convert to integer and make it positive
 //   sectionWrapper.style.left = "0px";
- 
+
 //   element.style.left = `${absoluteValue - 50}px`;
 // }
 
@@ -194,7 +234,7 @@ observer.observe(swiperContainer);
 try {
   swiperInit();
 } catch (error) {
-  console.error('Error in swiperInit:', error);
+  console.log('Error in swiperInit:');
 }
 
 try {
@@ -227,14 +267,18 @@ try {
 // }
 
 
-function gallary(){
+function gallary() {
   let gallarySection = Array.from(document.querySelector('.gallary_layout_one').children);
-  gallarySection.forEach((e , index)=>{
-    e.addEventListener('click', ()=>{
+  gallarySection.forEach((e, index) => {
+    e.addEventListener('click', () => {
       let img = e.children[0];
-      
+
     })
   })
 }
 
-gallary()
+try {
+  gallary()
+} catch (error) {
+  console.log(error)
+}
